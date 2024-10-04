@@ -16,7 +16,9 @@
 </form>
 
 <p id="result">Attempts: 0, Wrong guesses: 0</p>
-
+<div>
+    <img id="plantImage" src="bamboo.png" alt="Plant 1" width="200" height="200" onclick="nextImage()">
+</div>
 <script>
     let attempts = 0;
     let wrong = 0;
@@ -36,7 +38,28 @@
         attempts++;
 
         document.getElementById("result").innerHTML = `Attempts: ${attempts}, Wrong guesses: ${wrong}`;
+        
+       
     }
+
+    let showing = 1;
+
+function nextImage() {
+    switch (showing) {
+        case 1:
+            document.getElementById("plantImage").src = "rosemary.png";
+            showing = 2;
+            break;
+        case 2:
+            document.getElementById("plantImage").src = "money.png";
+            showing = 3;
+            break;
+        case 3:
+            document.getElementById("plantImage").src = "bamboo.png";
+            showing = 1;
+            break;
+    }
+}
 </script>
 </body>
 </html> 
