@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ <title>Fav color</title>
+<body>
+<h1>Guess the color Naguru Roshini</h1>
+<h2>Getting input</h2>
+
+<form>
+    <label for="mysteryColor">Guess the color:</label>
+    <input type="password" id="mysteryColor" value="Red"><br><br>
+
+    <label for="guessColor">Enter your guess:</label>
+    <input type="text" id="guessColor" autofocus><br><br>
+
+    <input type="button" onclick="processColor()" value="Check the color">
+</form>
+
+<p id="result">Attempts: 0, Wrong guesses: 0</p>
+
+<script>
+    let attempts = 0;
+    let wrong = 0;
+
+    function processColor() {
+        let mysteryColor = document.getElementById("mysteryColor").value;
+
+        let guessedColor = document.getElementById("guessColor").value;
+
+        if (mysteryColor.toLowerCase() === guessedColor.toLowerCase()) {
+            alert("You got it!");
+        } else {
+            wrong++;
+            alert("That was not it.");
+        }
+
+        attempts++;
+
+        document.getElementById("result").innerHTML = `Attempts: ${attempts}, Wrong guesses: ${wrong}`;
+    }
+</script>
+</body>
+</html> 
