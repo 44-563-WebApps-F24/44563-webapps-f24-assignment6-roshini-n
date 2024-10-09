@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Lunch </title>
+</head>
+<body>
+    <h1>Naguru Roshini Orders a Lunch</h1>
+    <form>
+        <label><input type="checkbox" id="drink"> Drink</label><br>
+        <label><input type="checkbox" id="side"> Side</label><br>
+        <label><input type="checkbox" id="in"> Eat in</label><br>
+        <button type="button" onclick="startLunch()">Start a lunch order</button>
+    </form>
+    <div id="lunchResult"></div>
+    <script>
+         let my_lunch={};
+    function  startLunch(){
+      my_lunch={};
+      my_lunch.drink = document.getElementById('drink').checked;
+      my_lunch.side = document.getElementById('side').checked;
+      my_lunch.in = document.getElementById('in').checked;
+      document.getElementById('lunch').innerHTML= JSON.stringify(my_lunch, null);
+    }
+</script>
+
+</body>
+</html> 
