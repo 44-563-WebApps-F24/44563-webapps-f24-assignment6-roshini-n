@@ -16,6 +16,14 @@
 
 <p id="result">The result will be displayed here.</p>
 
+<form>
+    <label><input type="radio" name="operation" value="Max" onclick="processRadio()"> Max</label><br>
+    <label><input type="radio" name="operation" value="Min" onclick="processRadio()"> Min</label><br>
+    <label><input type="radio" name="operation" value="Avg" onclick="processRadio()"> Average</label><br>
+    <label><input type="radio" name="operation" value="Geo" onclick="processRadio()"> Geometric Mean</label><br>
+</form>
+<div id="radioResult"></div>
+
 <script> 
 
 function powerSum() {
@@ -27,6 +35,31 @@ function powerSum() {
             }
             document.getElementById("result").innerHTML = 
                 `Sum of the first ${first} powers with base ${second} is ${sum}`;
+        }
+
+
+        function processRadio() {
+            const first = parseInt(document.getElementById('firstValue').value);
+            const second = parseInt(document.getElementById('secondValue').value);
+            let result;
+    
+            const operation = document.querySelector('input[name="operation"]:checked').value;
+    
+            switch (operation) {
+                case 'Max':
+                    result = Math.max(first, second);
+                    break;
+                case 'Min':
+                    result = Math.min(first, second);
+                    break;
+                case 'Avg':
+                    result = (first + second) / 2;
+                    break;
+                case 'Geo':
+                    result = Math.sqrt(first * second);
+                    break;
+            }
+            document.getElementById('radioResult').innerHTML = `Computed ${operation} with values ${first} and ${second} with result ${result}`;
         }
 </script>
 
