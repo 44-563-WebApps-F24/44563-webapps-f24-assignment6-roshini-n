@@ -1,30 +1,82 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <title>Lunch </title>
+<head>
+    <title>Grab a Drink</title>
 </head>
+
 <body>
-    <h1>Naguru Roshini Orders a Lunch</h1>
+
+    <h2>Naguru Roshini Orders a lunch</h2>
+
     <form>
-        <label><input type="checkbox" id="drink"> Drink</label><br>
-        <label><input type="checkbox" id="side"> Side</label><br>
-        <label><input type="checkbox" id="in"> Eat in</label><br>
+        <label for="drink">Drink</label>
+        <input type="checkbox" id="drink" value="drink">
+        <br>
+
+        <label for="side">Side</label>
+        <input type="checkbox" id="side" value="side">
+        <br>
+
+        <label for="in">Eat in</label>
+        <input type="checkbox" id="in" value="in">
+        <br>
+
+
         <button type="button" onclick="startLunch()">Start a lunch order</button>
     </form>
-    <div id="lunchResult"></div>
+    <br>
+    <h4>Want to modify your meal?</h4>
+    <form>
+        <label for="property">Enter property</label>
+        <input type="text" id="property" value="entree">
+        <br><br>
+
+        <label for="value">Set it to:</label>
+        <input type="text" id="value" value="">
+        <br><br>
+
+
+        <button type="button" onclick="updateLunch()">Update the lunch</button>
+    </form>
+    <p id="result"></p>
+    
+
+    
+   
     <script>
-         let my_lunch={};
-    function  startLunch(){
-      my_lunch={};
-      my_lunch.drink = document.getElementById('drink').checked;
-      my_lunch.side = document.getElementById('side').checked;
-      my_lunch.in = document.getElementById('in').checked;
-      document.getElementById('lunch').innerHTML= JSON.stringify(my_lunch, null);
-    }
-</script>
+        let my_lunch = {};
+
+
+        function startLunch() {
+
+            my_lunch = {};
+            my_lunch.drink = document.getElementById('drink').checked;
+            my_lunch.side = document.getElementById('side').checked;
+            my_lunch.eat_in = document.getElementById('in').checked;
+
+
+            document.getElementById('result').innerHTML = `
+                <strong>Lunch Order:</strong><br>
+                Drink: ${my_lunch.drink ? 'Yes' : 'No'}<br>
+                Side: ${my_lunch.side ? 'Yes' : 'No'}<br>
+                Eat in: ${my_lunch.eat_in ? 'Yes' : 'No'}
+            `;
+        }
+        function updateLunch() {
+            let property = document.getElementById('property').value;
+            let value = document.getElementById('value').value;
+
+            my_lunch[property] = value;
+
+            let result = "<strong>Updated Lunch Order:</strong><br>";
+            for (let key in my_lunch) {
+                result += `${key.charAt(0).toUpperCase() + key.slice(1)}: ${my_lunch[key]}<br>`;
+            }
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>
