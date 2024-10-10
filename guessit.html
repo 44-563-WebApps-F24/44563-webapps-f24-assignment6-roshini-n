@@ -39,20 +39,21 @@
         document.getElementById("result").innerHTML = `Attempts: ${attempts}, Wrong guesses: ${wrong}`;
     }
     let showing = 1;
-function nextImage() {
-    switch (showing) {
-        case 1:
-            document.getElementById("plantImage").src = "rosemary.png";
-            showing = 2;
-            break;
-        case 2:
-            document.getElementById("plantImage").src = "money.png";
-            showing = 3;
-            break;
-        case 3:
-            document.getElementById("plantImage").src = "bamboo.png";
-            showing = 1;
-            break;
+
+    function nextImage() {
+            switch (showing) {
+                case 1:
+                    document.getElementById("plantImage").src = "rose.png";
+                    showing = 2;
+                    break;
+                case 2:
+                    document.getElementById("plantImage").src = "money.png";
+                    showing = 3;
+                    break;
+                case 3:
+                    document.getElementById("plantImage").src = "bamboo.png";
+                    showing = 1;
+                    break;
     }
 }
 </script>
